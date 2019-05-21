@@ -26,19 +26,22 @@ class game(object):
                         if blob.clickDetection(clickPos):
                             print('HIT')
                             blob.targetHit = True
+                            targetList.pop(targetList.index(blob))
                             self.score += 1
 
             self.getTargets()
-
+            self.increaseTargetSize()
             self.redrawWindow()
+
+    def increaseTargetSize(self):
+        for blob in targetList:
+            blob.setNewRadius(2)
 
     def getTargets(self):
         if len(targetList) <= 5:
             targetList.append(target(20, self.width, self.height))
-            self.targetCount += 1
         else:
             targetList.pop(0)
-            self.targetCount -= 1
             self.score -= 1
             # Decrease score
 

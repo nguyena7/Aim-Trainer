@@ -21,3 +21,5 @@ class target(object):
                 return True
         else:
             return False
+    def setNewRadius(self, newRadius):
+        self.radius += newRadius
